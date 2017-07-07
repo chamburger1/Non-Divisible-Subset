@@ -22,10 +22,8 @@ int findSubset( map<int, int> x, int k){
         //requirements and 6%4=2 10%4=2 but 10+6=16 16%4=0 can only take one number with remainder of half or 0 
         if(i.first==0||i.first==half) 
             max+=1;
-            
         //check if match for pair of remainders that when added will give divisible njumber ex 3+1 =4 
         else if(x.count(k-i.first)>0){
-        
             //take higher of numbers with matching remainders, skips over second part of pair on future iterations        
             if(x.at(k-i.first)>i.second && usedindex.count(k-i.first)<1){    
                 max+=y.at(k-i.first);      
@@ -38,7 +36,6 @@ int findSubset( map<int, int> x, int k){
                 usedindex.insert(pair<int, int>(k-i.first, 1));        
             }
         }
-        
         //means there's no other remainder to cancel out, add that remainder count to max 
         else if(x.count(k-i.first)<1){  
             max+=i.second;
@@ -55,7 +52,7 @@ int main() {
     
     for(int i=0; i<N; i++){
         cin>>x;
-        long int rem;
+        int rem;
         rem=x%div;
         
         if(!setmembers.insert(pair<int, int>(rem, 1)).second){ 
